@@ -1,0 +1,11 @@
+email: zackshainsky@gmail.com
+fullname: 'Zack Shainsky'
+title: 'Gate Keeper'
+state: enabled
+access:
+  admin:
+    login: true
+    super: true
+  site:
+    login: true
+hashed_password: $2y$10$ZUnm.LlGzV7bkqunJCHBMOw4V5CjIZgk3rzv0GAFEnSMtDZGAok6.
