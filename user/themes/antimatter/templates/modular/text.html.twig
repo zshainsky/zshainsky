@@ -1,7 +1,16 @@
 <div class="modular-row callout">
     {% set image = page.media.images|first %}
+    {% set linkedin_link = page.header.linkedin_link %}
     {% if image %}
         {{ image.cropResize(400,400).html('','','align-'~page.header.image_align) }}
     {% endif %}
 {{ content }}
+	<div class="contact_links">
+		{% if email_link %}
+		   	<a href="mailto:{{ email_link }}"><i class="fa fa-envelope fa-2x"></i></a>
+		{% endif %}
+		{% if linkedin_link %}
+		   	<a href="{{ linkedin_link }}" target=_blank><i class="fa fa-linkedin-square fa-2x"></i></a>
+		{% endif %}
+	</div>
 </div>

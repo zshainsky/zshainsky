@@ -32,3 +32,23 @@ form:
                 'left': 'Left'
                 'right': 'Right'
               type:
+        content:
+          fields:
+            uploads:
+              label: Email Address for envelope icon
+            header.email_link:
+              type: select
+              label: Email Address
+              classes: fancy
+              default:
+              type: text
+        content:
+          fields:
+            uploads:
+              label: Linkedin Link for Linkedin icon
+            header.linkedin_link:
+              type: select
+              label: Linkedin Link
+              classes: fancy
+              default:
+              type: text
