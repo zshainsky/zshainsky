@@ -1,0 +1,42 @@
+title: Work
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        advanced:
+          fields:
+            columns:
+              fields:
+                column1:
+                  fields:
+                    name:
+                      default: modular/showcase
+                      '@data-options': '\Grav\Common\Page\Pages::modularTypes'
+            overrides:
+              fields:
+                header.template:
+                  default: modular/showcase
+                  '@data-options': '\Grav\Common\Page\Pages::modularTypes'
+        jobs:
+          type: tab
+          title: Jobs
+          fields:
+            header.jobs:
+              name: jobs
+              type: list
+              label: Jobs
+              fields:
+                .name:
+                  type: text
+                  label: text
+                .start_date:
+                  type: text
+                  label: text 
+                .end_date:
+                  type: text
+                  label: text
+                .title:
+                  type: text
+                  label: text

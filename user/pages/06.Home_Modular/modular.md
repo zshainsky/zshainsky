@@ -12,4 +12,5 @@ content:
         custom:
             - _showcase
             - _profile
+            - _work
 ---
