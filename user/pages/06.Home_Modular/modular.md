@@ -13,4 +13,5 @@ content:
             - _showcase
             - _profile
             - _work
+            - _about
 ---

@@ -13,3 +13,68 @@
 #body > script:first-child + .grav-lightslider {
   margin-top: -3rem;
 }
+
+
+// WORK Modular SCSS Code
+// variables
+$text-bg:        #ffffff;
+$text-padding:   7rem;
+
+
+// styling
+.work {
+    background: $text-bg;
+    padding: $text-padding $content-padding;
+    @include breakpoint(desktop-only) {
+        text-align: center;
+    }
+}
+
+.jobs {
+    margin-top: 2rem;
+    @supports not (flex-wrap: wrap) {
+        overflow: hidden;
+    }
+    
+        padding: 6rem 0;
+        text-align: center;
+        @include clearfix;
+    .job {
+
+    	display:block;
+        float: left;
+        width: 25%;
+        vertical-align: top;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        @include breakpoint(large-mobile-range) {
+                margin-top: 1rem;
+                width: 50%;
+            }
+            @include breakpoint(small-mobile-range) {
+                margin-top: 1rem;
+                width: 100%;
+            }
+
+            i.fa {
+                font-size: 2rem;
+                color: $core-accent;
+            }
+
+            h4 {
+                margin: 0;
+                font-size: 1.1rem;
+            }
+
+            p {
+                display: inline-block;
+                font-size: $core-font-size;
+                margin: 0.2rem 0 1rem;
+            }
+
+    	.job_meta { 
+			background: #f6f6f6;
+		}
+    }
+	
+}
