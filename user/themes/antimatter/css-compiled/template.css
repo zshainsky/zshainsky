@@ -895,6 +895,17 @@ ul.pagination {
   .callout img {
     border-radius: 3px; }
 
+.timeline-skills {
+  float: right;
+  position: relative;
+  width: 100%;
+  padding: 0 20px 0 100px;
+  text-align: left;
+  margin: 25px 0 0 0; }
+  .timeline-skills ul {
+    list-style-type: none;
+    padding: 0px; }
+
 .img-responsive {
   max-width: 100%;
   height: auto;
@@ -1030,7 +1041,26 @@ ul.pagination {
   .timeline > li.timeline-inverted > .timeline-panel {
     float: right;
     padding: 0 30px 20px 20px;
-    text-align: left; } }
+    text-align: left; }
+
+  .timeline > li .timeline-skills {
+    float: right;
+    padding: 0 30px 20px 20px;
+    width: 41%;
+    margin-top: 0px;
+    text-align: left; }
+    .timeline > li .timeline-skills ul {
+      list-style-type: none;
+      padding: 0px; }
+
+  .timeline > li.timeline-inverted > .timeline-skills {
+    float: left;
+    width: 41%;
+    margin-top: 0;
+    text-align: right; }
+    .timeline > li.timeline-inverted > .timeline-skills ul {
+      list-style-type: none;
+      padding: 0px; } }
 @media (min-width: 992px) {
   .timeline > li {
     min-height: 150px; }
@@ -1049,7 +1079,25 @@ ul.pagination {
     line-height: 26px; }
 
   .timeline > li.timeline-inverted > .timeline-panel {
-    padding: 0 20px 20px; } }
+    padding: 0 20px 20px; }
+
+  .timeline > li .timeline-skills {
+    float: right;
+    text-align: left;
+    width: 41%;
+    position: relative; }
+    .timeline > li .timeline-skills ul {
+      list-style-type: none;
+      padding: 0px; }
+
+  .timeline > li.timeline-inverted > .timeline-skills {
+    float: left;
+    width: 41%;
+    margin-top: 0;
+    text-align: right; }
+    .timeline > li.timeline-inverted > .timeline-skills ul {
+      list-style-type: none;
+      padding: 0px; } }
 @media (min-width: 1200px) {
   .timeline > li {
     min-height: 170px; }
@@ -1066,7 +1114,25 @@ ul.pagination {
     margin-top: 40px; }
 
   .timeline > li.timeline-inverted > .timeline-panel {
-    padding: 0 0px 20px 20px; } }
+    padding: 0 0px 20px 20px; }
+
+  .timeline > li .timeline-skills {
+    float: right;
+    text-align: left;
+    width: 41%;
+    position: relative; }
+    .timeline > li .timeline-skills ul {
+      list-style-type: none;
+      padding: 0px; }
+
+  .timeline > li.timeline-inverted > .timeline-skills {
+    float: left;
+    width: 41%;
+    margin-top: 0;
+    text-align: right; }
+    .timeline > li.timeline-inverted > .timeline-skills ul {
+      list-style-type: none;
+      padding: 0px; } }
 .modular .modular-row:last-child {
   margin-bottom: 2rem; }
 
