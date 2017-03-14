@@ -1,5 +1,5 @@
 ---
-title: One Page Demo Site
+title: Zack Shainsky
 menu: Home
 onpage_menu: true
 body_classes: "modular header-image fullwidth"
@@ -12,6 +12,6 @@ content:
         custom:
             - _showcase
             - _profile
-            - _work
+            - _portfolio
             - _about
 ---

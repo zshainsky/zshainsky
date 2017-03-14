@@ -10,7 +10,7 @@ buttons:
 ---
 
 # Zack Shainsky
-Sales Engineer, Software Engineer, Technology Enthusiest
+Sales Engineer, Software Engineer, Technology Enthusiast
 
 #### Party Favors
 

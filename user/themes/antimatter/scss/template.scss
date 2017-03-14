@@ -16,6 +16,9 @@
 // Load Template Library
 @import "template/modules/base";
 
+// Bootstrap (customized to only have grid system and nothing else!)
+@import "../css/bootstrap.css";
+
 //-------------------------------------------
 
 // TEMPLATE COMPONENTS
@@ -65,3 +68,4 @@
 
 // Modular
 @import "template/modular/all";
+

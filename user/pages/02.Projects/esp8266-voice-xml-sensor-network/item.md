@@ -1,13 +1,15 @@
 ---
 title: 'ESP8266 + Voice XML Sensor Network'
+image_header: ESPDHT11.png 
+taxonomy:
+ tag: [portfolio, hardware, software]
 ---
 
-### Overview
-The premis for this project was to create a sensor netowrk that could both send and recieve data via Voise XML. I accomplished this using many technologies such as, PHP, XML, Voice XML, XSLT, ESP8266, LEDs, and a temperature sensor. In my sensor network I configured two wifi enabled microcontrollers to run a full TCP/IP stack, where one microcontroller would act as a server (waiting for commands) and the other would act as a client (sending data). The server controlled the color of an RGB LED, which changed based on voice commands sent via Voice XML.The client was pulling temperature data via a [DHT11](https://www.adafruit.com/product/386), temperature/humidity sensor, and sending that to be stored on a public cloud server in an XML file.
+The premise for this project was to create a sensor network that could both send and receive data via Voice XML. I accomplished this using many technologies such as, PHP, XML, Voice XML, XSLT, ESP8266, LEDs, and a temperature sensor. In my sensor network I configured two wifi enabled microcontrollers to run a full TCP/IP stack, where one microcontroller would act as a server (waiting for commands) and the other would act as a client (sending data). The server controlled the color of an RGB LED, which changed based on voice commands sent via Voice XML.The client was pulling temperature data via a [DHT11](https://www.adafruit.com/product/386), temperature/humidity sensor, and sending that to be stored on a public cloud server in an XML file.
 
 The result of this project was the ability to request temperature information within a specific time range and the ability to change the color of the LED light all via voice commands. I made a video and have listed more information about the technologies and code I used below. Note to reader: If I had to go back and do this project all over again, I would never use these XML technologies. Enjoy!
 
-**Pro tip:** If you dont like reading check out my video [XML SensorNet](https://www.youtube.com/edit?o=U&video_id=XvHOK9Ne5KM)
+**Pro tip:** If you don't like reading check out my video [XML SensorNet](https://www.youtube.com/edit?o=U&video_id=XvHOK9Ne5KM)
 
 ##### Cool photos from the project
 ESP8266 Client + Temperature Sensor (LEFT) | ESP8266 Server + LED (RIGHT)
@@ -15,7 +17,7 @@ ESP8266 Client + Temperature Sensor (LEFT) | ESP8266 Server + LED (RIGHT)
 ![](ESPDHT11.png)![](ESPLED.png)
 
 ### ESP8266
-An ESP8266 is an 80MHz processor that is wifi enabled to run a full TCP/IP network stack. Because this chip is a microporssesor, that eliminates the need to use something else like arduino + a wifi shield, to do simple embeded projects. The easiest way I found to work with this chip was with a breakout board from [adafruit](https://www.adafruit.com/product/2471). The reason I selected this board specifically, is for two reasons,
+An ESP8266 is an 80MHz processor that is wifi enabled to run a full TCP/IP network stack. Because this chip is a microprocessor, that eliminates the need to use something else like arduino + a wifi shield, to do simple embedded projects. The easiest way I found to work with this chip was with a breakout board from [adafruit](https://www.adafruit.com/product/2471). The reason I selected this board specifically, is for two reasons,
 1. Adafruit has some good documentation and walkthroughs
 2. It works with Arduino code, which requires little code to get you hosting your own website on this tiny wifi enabled microcontroller in no time
 
@@ -23,12 +25,12 @@ An ESP8266 is an 80MHz processor that is wifi enabled to run a full TCP/IP netwo
 
 ### XML Technologies
 #### XSLT
-Voice XML is an interesting technology that combinds the brillient suite of XML technologies into one automated voice of agonizing frustration. If you have ever thrown your phone across the room due to a voice automated customer service agagent than this might not be the technology for you. Now, with that out of my system, I think we can all agree, with the rise of Alexa and Google Home purely getting technology to respond to your voice is very satisfying when it works! So I set off on the Voice XML jouney before I was aware of companies like MessageBird and Twilio.
+Voice XML is an interesting technology that combines the brilliant suite of XML technologies into one automated voice of agonizing frustration. If you have ever thrown your phone across the room due to a voice automated customer service agent than this might not be the technology for you. Now, with that out of my system, I think we can all agree, with the rise of Alexa and Google Home purely getting technology to respond to your voice is very satisfying when it works! So I set off on the Voice XML journey before I was aware of companies like MessageBird and Twilio.
 
 The XML technologies that I used in this project were XSLT and a Voice XML. XSLT ([Extensible Stylesheet Language Transformations](https://www.w3.org/Style/XSL/WhatIsXSL.html)) is an XML technology that reads from XML documents to style and display another XML document. For example, if I have a bunch of data points in my XML document (a type of data store) and I want to add those points to be displayed to a web browser I could use an XSLT call like the following, `<xsl:value of
 select="//dataPoint[@nodeId=1][@nodeType=temp][last()]/tempVal"/>`. What this does is looks for all attributes named `nodeId=1` and out of those values returned it looks for attributes named `nodeType` with a value of `temp`. Lastly, we grab the last value, `last()`. Now, where ever that line is inserted into our XSLT file, we will get a numeric result back. You might be asking why this is useful, well if you have lots of values or data in an XML file, it can be a really nice way to dynamically build XML documents.
 
-This might be a snooze to most peopele so let's move on.
+This might be a snooze to most people so let's move on.
 
 #### Voice XML
 In order for Voice XML to work, you need a phone number to call right? RIGHT! There are services out there that enable this and the one I used for this project is called, [Voxeo](https://evolution.voxeo.com/). Frankly, this isn't your cool and cutting edge, API like has a slick interface, but it worked. Essentially for this to work, Voxeo gives you a phone number and you upload an XML file that can be interpreted as Voice XML and you are off to the races. I will warn you, the automatic voice operator will read back full stack crashed with her robotic voice if your code has bugs in it...
@@ -41,14 +43,14 @@ In order for Voice XML to work, you need a phone number to call right? RIGHT! Th
 ##### ESP8266 Client sending temperature data
 This code was downloaded and run on the ESP8266 that continuously sent temperature data to be stored on public cloud server (Lyle Server). The XML format that the data was sent in is as follows:
 ```
-<?xml version="1.0" encoding="UTF8"?> 
+<?xml version="1.0" encoding="UTF8"?>
 <sensorData>
-	<dataPoint nodeId="1" nodeType= "temp"> 
-		<tempVal>66.20</tempVal> 
-		<humidVal>4 0.00</humidVal> 
-		<date>20160502</date> 
+	<dataPoint nodeId="1" nodeType= "temp">
+		<tempVal>66.20</tempVal>
+		<humidVal>4 0.00</humidVal>
+		<date>20160502</date>
 		<time>10:54:03</time>
-	</dataPoint> 
+	</dataPoint>
 </sensorData>
 ```
 ```
@@ -74,14 +76,14 @@ void setup() {
 
   // Initialize DHT module
   dht.begin();
-  
+
   // Initialize WiFi module...Try to connect
   Serial.println();
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
   WiFi.begin(ssid, password);
-  
+
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
@@ -100,13 +102,13 @@ void loop() {
 
   float h = dht.readHumidity();
   float f = dht.readTemperature(true); //true = Fahrenheit
-  
+
   // Check if any reads failed and exit early (to try again).
   if (isnan(h) || isnan(f)) {
     Serial.println("Failed to read from DHT sensor!");
     return;
   }
-  
+
   // Compute heat index in Fahrenheit (the default)
   float hif = dht.computeHeatIndex(f, h);
 
@@ -123,7 +125,7 @@ void loop() {
 
   Serial.print("connecting to ");
   Serial.println(host);
-  
+
   // Use WiFiClient class to create TCP connections
   WiFiClient client;
   const int httpPort = 80;
@@ -138,28 +140,28 @@ void loop() {
                      "temp=" + f +"&" +
                      "humid=" + h;
   String url = " /~zshainsky/7347/SensorNet/sensorNetPost.php" + getParams;
-  
+
   Serial.print("Requesting URL: ");
   Serial.println(url);
   // Serial.println("Sending POST Request: ");
   // Serial.println(post);
-  
+
   // This will send the request to the server
   client.print(String("GET ") + url + " HTTP/1.1\r\n" +
-               "Host: " + host + "\r\n" + 
+               "Host: " + host + "\r\n" +
                "Connection: close\r\n\r\n");
   delay(10);
-  
+
   //Read all the lines of the reply from server and print them to Serial
   while(client.available()){
     String line = client.readStringUntil('\r');
     Serial.print(line);
   }
-   
+
   Serial.println();
   Serial.println("closing connection");
   Serial.println("Waiting 15 seconds for next data reading...");
-  
+
   delay(15000);
 }
 ```
@@ -256,22 +258,22 @@ void setup() {
   digitalWrite(RED_PIN, HIGH);
   digitalWrite(GREEN_PIN, HIGH);
   digitalWrite(BLUE_PIN, HIGH);
-  
+
   // Connect to WiFi network
   Serial.println();
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
-  
+
   WiFi.begin(ssid, password);
-  
+
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
   Serial.println("");
   Serial.println("WiFi connected");
-  
+
   // Start the server
   server.begin();
   Serial.println("Server started");
@@ -315,11 +317,11 @@ void loop() {
     client.stop();
     return;
   }
-  
+
   client.flush();
 
   // Prepare the response
-  String s = String("HTTP/1.1") + " 200 OK\r\nContent-Type: text/xml\r\n\r\n" + 
+  String s = String("HTTP/1.1") + " 200 OK\r\nContent-Type: text/xml\r\n\r\n" +
              "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" +
              "<vxml version=\"2.1\">" +
              "<form id=\"getRequest\"><block><prompt></prompt> <goto next=\"http://lyle.smu.edu/~zshainsky/7347/SensorNet/sensorNetVoice.xml#getRequest\" />\"</block></form>" +
@@ -330,7 +332,7 @@ void loop() {
   delay(1);
   Serial.println("Client disonnected");
 
-  // The client will actually be disconnected 
+  // The client will actually be disconnected
   // when the function returns and 'client' object is detroyed
 
 }
@@ -499,7 +501,7 @@ This code runs on the Voice XML server. The XML code uses XSLT to dynamically lo
 				<if cond="detail == 'curTemp'">
 					<goto next="#sensorQuery"/>
 				<elseif cond="detail == 'tempByDate'"/>
-					<goto next="#tempByDateSelect"/> 
+					<goto next="#tempByDateSelect"/>
 				</if>
 			</filled>
 		</field>
@@ -543,29 +545,29 @@ This code is XSLT at its finest. It uses XSLT to query through the XML file fill
 					<xsl:choose>
 						<xsl:when test="$tempDetail = 'curTemp'">
 							The current temperature is:
-							<say-as interpret-as="vxml:digits"> 
+							<say-as interpret-as="vxml:digits">
 								<xsl:value-of select="//dataPoint[@nodeId = 1][@nodeType = $nodeType][last()]/tempVal"/>
 							</say-as>
-							degrees fahrenheit with 
-							<say-as interpret-as="vxml:digits"> 
+							degrees fahrenheit with
+							<say-as interpret-as="vxml:digits">
 								<xsl:value-of select="//dataPoint[@nodeId = 1][@nodeType = $nodeType][last()]/humidVal"/>
 							</say-as>
 							percent humidity.
 							Enjoy your day.
 						</xsl:when>
 						<xsl:when test="$tempDetail = 'tempByDate'">
-							The average temperature between 
+							The average temperature between
 							<say-as interpret-as="vxml:date"><xsl:value-of select="$startDate"/></say-as>
 							and
 							<say-as interpret-as="vxml:date"><xsl:value-of select="$endDate"/></say-as>
 							was
-							<xsl:variable name="avgTempList" select="//dataPoint[@nodeId = 1][@nodeType = 'temp'][date &gt; $startDate][date &lt; $endDate]/tempVal" /> 
-							<say-as interpret-as="vxml:digits"> 
+							<xsl:variable name="avgTempList" select="//dataPoint[@nodeId = 1][@nodeType = 'temp'][date &gt; $startDate][date &lt; $endDate]/tempVal" />
+							<say-as interpret-as="vxml:digits">
 								<xsl:value-of select="sum($avgTempList) div count($avgTempList)"/>
 							</say-as>
-							, and the average humidity percentage was 
+							, and the average humidity percentage was
 							<xsl:variable name="avgHumidList" select="//dataPoint[@nodeId = 1][@nodeType = 'temp'][date &gt; $startDate][date &lt; $endDate]/humidVal" />
-							<say-as interpret-as="vxml:digits"> 
+							<say-as interpret-as="vxml:digits">
 								<xsl:value-of select="sum($avgHumidList) div count($avgHumidList)"/>.
 							</say-as>
 						</xsl:when>
@@ -581,4 +583,3 @@ This code is XSLT at its finest. It uses XSLT to query through the XML file fill
 </xsl:template>
 </xsl:stylesheet>
 ```
-
